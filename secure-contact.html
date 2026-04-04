@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Shashikant Ghadage & Associates</title>
+  <meta name="description" content="Contact Shashikant Ghadage & Associates, Chartered Accountants in Shirur, Pune for professional enquiries regarding GST, Income Tax, Audit and Advisory services.">
+  <meta property="og:title" content="Contact Us | Shashikant Ghadage & Associates">
+  <meta property="og:description" content="Reach out for professional enquiries regarding CA services.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="canonical" href="https://cashashikantghadage.ca/secure-contact.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-content {
+      max-width: 1100px; margin: 0 auto; padding: 40px 20px 60px;
+      display: grid; grid-template-columns: 3fr 2fr; gap: 40px;
+    }
+    @media (max-width: 850px) { .page-content { grid-template-columns: 1fr; } }
+
+    /* Form Card */
+    .contact-card {
+      background: var(--white); padding: 40px; border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    .contact-card::before {
+      content: ''; display: block; height: 3px; margin: -40px -40px 30px;
+      background: linear-gradient(90deg, var(--gold), var(--navy));
+      border-radius: 16px 16px 0 0;
+    }
+    .contact-card-title {
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--navy); margin-bottom: 24px; font-size: 1.5em;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .contact-card-title svg { color: var(--navy); }
+
+    .submit-btn {
+      background: var(--navy); color: var(--white); border: none;
+      padding: 14px; width: 100%; border-radius: 8px; font-size: 14px;
+      font-weight: 600; cursor: pointer; transition: all 0.2s;
+      font-family: 'Jost', sans-serif; letter-spacing: 0.5px;
+    }
+    .submit-btn:hover { background: var(--gold); color: var(--navy); }
+
+    .form-note {
+      text-align: center; font-size: 12px; color: var(--muted); margin-top: 16px;
+    }
+
+    /* Info Panel */
+    .info-panel { display: flex; flex-direction: column; gap: 24px; }
+    .info-card {
+      background: var(--navy); color: var(--white); padding: 32px;
+      border-radius: 16px;
+    }
+    .info-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--gold); margin-bottom: 20px; font-size: 1.3em;
+    }
+    .info-detail { display: flex; gap: 14px; margin-bottom: 16px; align-items: flex-start; }
+    .info-detail:last-child { margin-bottom: 0; }
+    .info-icon { font-size: 1.1em; flex-shrink: 0; margin-top: 2px; }
+    .info-detail p { font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.7; margin: 0; }
+    .info-detail strong { color: var(--white); }
+    .info-detail a { color: rgba(255,255,255,0.75); text-decoration: none; }
+    .info-detail a:hover { color: var(--gold); }
+
+    .credentials-card {
+      background: var(--white); color: var(--navy); padding: 28px;
+      border-radius: 16px; border: 1px solid rgba(0,0,0,0.06);
+    }
+    .credentials-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--navy); margin-bottom: 16px; font-size: 1.2em;
+      border-bottom: 2px solid var(--gold); padding-bottom: 10px;
+    }
+    .cred-row {
+      display: flex; justify-content: space-between; padding: 8px 0;
+      font-size: 14px; border-bottom: 1px solid var(--border-light);
+    }
+    .cred-row:last-child { border-bottom: none; }
+    .cred-row span:first-child { color: var(--muted); }
+    .cred-row span:last-child { font-weight: 600; color: var(--navy); }
+
+    /* Dropzone */
+    .dropzone {
+      border: 2px dashed rgba(13,27,62,0.15); background: var(--cream);
+      border-radius: 8px; padding: 24px; text-align: center;
+      margin-bottom: 24px; cursor: pointer; transition: all 0.3s;
+    }
+    .dropzone:hover { border-color: var(--gold); background: #fffdf8; }
+    .dropzone p { color: var(--navy); font-weight: 500; font-size: 14px; margin-bottom: 4px; }
+    .dropzone span { font-size: 12px; color: var(--muted); }
+
+    @media (max-width: 600px) {
+      .contact-card { padding: 24px; }
+      .contact-card::before { margin: -24px -24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="site-nav">
+  <a class="logo" href="index.html">
+    <div class="logo-icon">SG</div>
+    <div class="logo-text"><span>Shashikant Ghadage</span><small>& Associates</small></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#tools">Tools</a></li>
+    <li><a href="compliance-calendar.html">Calendar</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="secure-contact.html" style="color:var(--gold);">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="secure-contact.html" style="background:var(--gold-light);">Get In Touch</a>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Toggle navigation">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <h1>Contact <em>Our Office</em></h1>
+  <p>Submit your professional enquiries. All information is handled with strict confidentiality as per the ICAI Code of Ethics.</p>
+</div>
+
+<!-- CONTENT -->
+<div class="page-content">
+
+  <!-- Contact Form -->
+  <div class="contact-card fade-up">
+    <h2 class="contact-card-title">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+      Professional Enquiry Form
+    </h2>
+
+    <form id="enquiryForm" onsubmit="submitEnquiry(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Contact Name</label>
+          <input type="text" id="clientName" required placeholder="Your full name">
+        </div>
+        <div class="form-group">
+          <label>Business Entity Name</label>
+          <input type="text" id="entityName" placeholder="M/s Company Name (if applicable)">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Phone / WhatsApp</label>
+          <input type="tel" id="clientPhone" required placeholder="+91">
+        </div>
+        <div class="form-group">
+          <label>Nature of Enquiry</label>
+          <select id="inquiryType" required>
+            <option value="">-- Select Category --</option>
+            <option value="GST Notice / Scrutiny Response">GST Notice / Scrutiny Response</option>
+            <option value="Project Finance & Subsidy Advisory">Project Finance & Subsidy Advisory</option>
+            <option value="Tax Planning & Entity Structuring">Tax Planning & Entity Structuring</option>
+            <option value="Audit & Assurance Services">Audit & Assurance Services</option>
+            <option value="Technology-Assisted Accounting">Technology-Assisted Accounting</option>
+            <option value="General Professional Enquiry">General Professional Enquiry</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Briefly describe your requirement</label>
+        <textarea id="clientMessage" required placeholder="E.g., I need assistance with GST annual return filing for FY 2025-26..."></textarea>
+      </div>
+
+      <div class="dropzone" onclick="document.getElementById('fileProxy').click()">
+        <p>Click to attach relevant documents (Optional)</p>
+        <span>E.g., Notice PDFs, Balance Sheets (Max 10MB)</span>
+        <input type="file" id="fileProxy" style="display:none;">
+      </div>
+
+      <button type="submit" class="submit-btn">Submit Enquiry</button>
+
+      <p class="form-note">Your enquiry will be routed to our WhatsApp Business line for prompt response.</p>
+    </form>
+  </div>
+
+  <!-- Info Panel -->
+  <div class="info-panel">
+    <div class="info-card fade-up">
+      <h3>Office Details</h3>
+      <div class="info-detail">
+        <span class="info-icon">&#128205;</span>
+        <p><strong>Shashikant Ghadage & Associates</strong><br>Office 118, 1st Floor, Below Digi Hold Cinema,<br>Oxy Gold, Baburao Nagar,<br>Nagar Pune Highway, Shirur 412207</p>
+      </div>
+      <div class="info-detail">
+        <span class="info-icon">&#128222;</span>
+        <p><strong>Phone / WhatsApp</strong><br><a href="tel:+918446208488">+91 84462 08488</a></p>
+      </div>
+      <div class="info-detail">
+        <span class="info-icon">&#9993;</span>
+        <p><strong>Email</strong><br><a href="mailto:info@cashashikantghadage.ca">info@cashashikantghadage.ca</a></p>
+      </div>
+      <div class="info-detail">
+        <span class="info-icon">&#9200;</span>
+        <p><strong>Business Hours</strong><br>Mon &ndash; Sat: 10:00 AM &ndash; 7:00 PM<br>Sunday: By Appointment</p>
+      </div>
+    </div>
+
+    <div class="credentials-card fade-up">
+      <h3>Professional Credentials</h3>
+      <div class="cred-row"><span>ICAI Membership No.</span> <span>614759</span></div>
+      <div class="cred-row"><span>Firm Registration (FRN)</span> <span>158188W</span></div>
+      <div class="cred-row"><span>Practicing Since</span> <span>2009</span></div>
+      <div class="cred-row"><span>Location</span> <span>Shirur, Pune</span></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- DISCLAIMER -->
+<div class="disclaimer-bar">
+  <p><strong>Disclaimer:</strong> This website is an informational resource maintained by Shashikant Ghadage & Associates (FRN: 158188W), Chartered Accountants registered with ICAI. The content does not constitute solicitation or advertisement in any manner prohibited under the Chartered Accountants Act, 1949 or ICAI guidelines including those approved in the 447th Council Meeting. Any personal information submitted is used solely for the purpose of responding to your enquiry and is handled in accordance with applicable data protection laws.</p>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>Shashikant Ghadage & Associates</h3>
+      <div class="credentials">Chartered Accountants</div>
+      <p>ICAI Membership No.: 614759<br>Firm Registration No.: 158188W<br><br>Office 118, 1st Floor, Below Digi Hold Cinema,<br>Oxy Gold, Baburao Nagar, Shirur, Pune 412207</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="index.html#services">GST & Income Tax</a>
+      <a href="index.html#services">Audit & Assurance</a>
+      <a href="index.html#services">Company Registration</a>
+      <a href="automation-services.html">Technology Services</a>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <a href="index.html#tools">Financial Calculators</a>
+      <a href="compliance-calendar.html">Compliance Calendar</a>
+      <a href="msme-subsidy-guide.html">MSME Subsidy Guide</a>
+      <a href="presumptive-tax-guide.html">Presumptive Tax Guide</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p><a href="tel:+918446208488" style="color:rgba(255,255,255,0.5); text-decoration:none;">+91 84462 08488</a><br>
+      <a href="mailto:info@cashashikantghadage.ca" style="color:rgba(255,255,255,0.5); text-decoration:none;">info@cashashikantghadage.ca</a><br><br>
+      Mon &ndash; Sat: 10 AM &ndash; 7 PM</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Shashikant Ghadage & Associates. All Rights Reserved.</p>
+    <p><a href="https://cashashikantghadage.ca">cashashikantghadage.ca</a></p>
+  </div>
+</footer>
+
+<script>
+function submitEnquiry(e) {
+  e.preventDefault();
+  var name = document.getElementById('clientName').value;
+  var entity = document.getElementById('entityName').value || 'Individual / Not Provided';
+  var phone = document.getElementById('clientPhone').value;
+  var type = document.getElementById('inquiryType').value;
+  var message = document.getElementById('clientMessage').value;
+  var fileInput = document.getElementById('fileProxy');
+  var fileNote = fileInput.files.length > 0 ? '%0A%0ANote: I have documents to share.' : '';
+
+  var text = 'Professional Enquiry%0A%0AName: ' + encodeURIComponent(name) +
+    '%0AEntity: ' + encodeURIComponent(entity) +
+    '%0APhone: ' + encodeURIComponent(phone) +
+    '%0ACategory: ' + encodeURIComponent(type) +
+    '%0A%0ADetails: ' + encodeURIComponent(message) + fileNote;
+
+  var btn = document.querySelector('.submit-btn');
+  btn.innerHTML = 'Redirecting...';
+  btn.style.background = '#16a34a';
+  setTimeout(function() {
+    window.open('https://wa.me/918446208488?text=' + text, '_blank');
+    document.getElementById('enquiryForm').reset();
+    btn.innerHTML = 'Submit Enquiry';
+    btn.style.background = 'var(--navy)';
+  }, 600);
+}
+
+/* File attach display */
+document.getElementById('fileProxy').addEventListener('change', function() {
+  var p = document.querySelector('.dropzone p');
+  if (this.files.length > 0) {
+    p.innerText = 'File Selected: ' + this.files[0].name;
+    p.style.color = '#16a34a';
+  }
+});
+
+/* Scroll animations */
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(function(el) { observer.observe(el); });
+
+/* Hamburger */
+function toggleMenu() { document.querySelector('.nav-links').classList.toggle('mobile-open'); }
+</script>
+</body>
+</html>

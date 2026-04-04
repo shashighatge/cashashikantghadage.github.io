@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MSME Subsidy & Project Finance Guide | Shashikant Ghadage & Associates</title>
+  <meta name="description" content="Informational guide on Maharashtra PSI Subsidy eligibility, industrial zone classification, and CMA data requirements for bank funding.">
+  <meta property="og:title" content="MSME Subsidy & Project Finance Guide | Shashikant Ghadage & Associates">
+  <meta property="og:description" content="Understand Maharashtra PSI Subsidy eligibility and CMA data requirements for bank funding.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="canonical" href="https://cashashikantghadage.ca/msme-subsidy-guide.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-content {
+      max-width: 1000px; margin: 0 auto; padding: 40px 20px 60px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 30px;
+    }
+    @media (max-width: 768px) { .page-content { grid-template-columns: 1fr; } }
+
+    .guide-card {
+      background: var(--white); padding: 36px; border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    .guide-card-gold { border-top: 3px solid var(--gold); }
+    .guide-card-navy { border-top: 3px solid var(--navy); }
+
+    .guide-card h2 {
+      font-size: 1.4rem; margin-bottom: 16px;
+      border-bottom: 1px solid var(--border-light); padding-bottom: 10px;
+    }
+    .guide-card > p { font-size: 14px; color: var(--muted); margin-bottom: 20px; line-height: 1.7; }
+
+    /* Estimator result */
+    .estimate-result {
+      background: var(--navy); color: var(--white); padding: 24px;
+      border-radius: 12px; margin-top: 20px; display: none;
+      animation: fadeIn 0.4s ease;
+    }
+    .estimate-result.active { display: block; }
+    @keyframes fadeIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+    .zone-badge {
+      display: inline-block; background: var(--gold); color: var(--navy);
+      padding: 4px 16px; border-radius: 6px; font-weight: 600; font-size: 14px; margin-bottom: 14px;
+    }
+    .est-row {
+      margin-bottom: 10px; font-size: 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;
+      display: flex; justify-content: space-between;
+    }
+    .est-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .est-row span:last-child { font-weight: 600; color: var(--gold); }
+
+    /* Checklist */
+    .checklist-item {
+      margin-bottom: 14px; padding-left: 28px; position: relative;
+      font-size: 14px; color: var(--text); line-height: 1.7;
+    }
+    .checklist-item::before {
+      content: '\2713'; position: absolute; left: 0; top: 0;
+      color: #16a34a; font-weight: bold; font-size: 1.1em;
+    }
+
+    .tech-note {
+      background: var(--cream); padding: 16px; border-radius: 8px;
+      border-left: 3px solid var(--navy); margin-top: 24px; font-size: 13px;
+      color: var(--muted); line-height: 1.7;
+    }
+    .tech-note strong { color: var(--navy); }
+
+    /* Full-width info note */
+    .full-width { grid-column: 1 / -1; }
+    .info-note {
+      background: var(--cream); border: 1px solid var(--border);
+      border-radius: 12px; padding: 24px 28px;
+      font-size: 14px; color: var(--muted); line-height: 1.8;
+    }
+    .info-note strong { color: var(--navy); }
+  </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="site-nav">
+  <a class="logo" href="index.html">
+    <div class="logo-icon">SG</div>
+    <div class="logo-text"><span>Shashikant Ghadage</span><small>& Associates</small></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#tools">Tools</a></li>
+    <li><a href="compliance-calendar.html">Calendar</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="secure-contact.html">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="secure-contact.html">Get In Touch</a>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Toggle navigation">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <h1>MSME Subsidy & <em>Project Finance</em> Guide</h1>
+  <p>An informational resource on Maharashtra PSI Subsidy eligibility and CMA data requirements for bank funding of industrial projects.</p>
+</div>
+
+<!-- CONTENT -->
+<div class="page-content">
+
+  <!-- PSI Estimator -->
+  <div class="guide-card guide-card-gold fade-up">
+    <h2>PSI Subsidy Estimator</h2>
+    <p>Select your proposed factory location to understand the indicative industrial zone classification and incentive percentage under the Maharashtra State Industrial Policy.</p>
+
+    <div class="form-group">
+      <label>Select Taluka / MIDC Area</label>
+      <select id="talukaSelect" onchange="calculateSubsidy()">
+        <option value="none">-- Select Location --</option>
+        <option value="pune_city">Pune City / PCMC (Developed)</option>
+        <option value="shirur">Shirur (Including Ranjangaon MIDC)</option>
+        <option value="daund">Daund</option>
+        <option value="parner">Parner (Supa MIDC)</option>
+        <option value="shrigonda">Shrigonda</option>
+        <option value="other_d">Other 'D' / 'D+' Zone Areas</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Estimated Fixed Capital Investment (&#8377;)</label>
+      <input type="number" id="investmentAmount" placeholder="e.g. 15000000 for 1.5 Cr" oninput="calculateSubsidy()">
+      <div class="form-hint">Plant, Machinery & Building combined</div>
+    </div>
+
+    <div class="estimate-result" id="resultBox">
+      <div class="zone-badge" id="zoneBadge">Zone A</div>
+      <p style="font-size:13px; color:#ccc; margin-bottom:14px;" id="zoneDesc">Highly Developed Area</p>
+      <div class="est-row"><span>Max Subsidy on Investment</span> <span id="maxPercentage">0%</span></div>
+      <div class="est-row"><span>Estimated Incentive Ceiling</span> <span id="estimatedCeiling">&#8377; 0</span></div>
+      <div class="est-row"><span>Eligibility Period</span> <span id="eligibilityPeriod">0 Years</span></div>
+      <p style="font-size:12px; color:#999; margin-top:14px; font-style:italic;">*Indicative figures. Actual incentives are distributed as SGST refunds, electricity duty exemptions, and interest subsidies over the eligibility period. Subject to government policy.</p>
+    </div>
+  </div>
+
+  <!-- CMA Checklist -->
+  <div class="guide-card guide-card-navy fade-up">
+    <h2>CMA Data & Bank Finance Checklist</h2>
+    <p>Key documentation typically required to prepare a Project Report for Term Loans, Working Capital (CC/OD), or Mudra funding.</p>
+
+    <div class="checklist-item"><strong>Entity Proof:</strong> Udyam Registration, Shop Act, PAN, and Partnership Deed / MOA.</div>
+    <div class="checklist-item"><strong>Financial History:</strong> 3 Years Audited Balance Sheets and Income Tax Returns (for existing businesses).</div>
+    <div class="checklist-item"><strong>Capital Assessment:</strong> Quotations for new Plant & Machinery, and Civil Engineer's estimate for factory building.</div>
+    <div class="checklist-item"><strong>Operational Permits:</strong> MPCB Consent to Establish, FSSAI (if food processing), and MIDC Lease Agreement.</div>
+    <div class="checklist-item"><strong>Financial Projections:</strong> 5 to 7 years projected CMA (Credit Monitoring Arrangement) Data validating Debt-Service Coverage Ratio (DSCR).</div>
+
+    <div class="tech-note">
+      <strong>Our Approach:</strong> We utilise technology-assisted tools including Excel Power Query and financial modelling techniques to prepare CMA reports. For enquiries about project finance advisory, please <a href="secure-contact.html" style="color:var(--gold);">contact our office</a>.
+    </div>
+  </div>
+
+  <!-- Info note -->
+  <div class="full-width fade-up">
+    <div class="info-note">
+      <strong>Important:</strong> The subsidy estimator above provides indicative figures based on the Maharashtra Package Scheme of Incentives. Actual eligibility depends on multiple factors including entity type, date of commencement, compliance with environmental norms, and government notifications in force at the time of application. We recommend obtaining a detailed professional assessment before making investment decisions. For assistance, please <a href="secure-contact.html" style="color:var(--gold);">reach out to our office</a>.
+    </div>
+  </div>
+
+</div>
+
+<!-- DISCLAIMER -->
+<div class="disclaimer-bar">
+  <p><strong>Disclaimer:</strong> This website is an informational resource maintained by Shashikant Ghadage & Associates (FRN: 158188W), Chartered Accountants registered with ICAI. The content and tools provide indicative information only and do not constitute solicitation or advertisement under the Chartered Accountants Act, 1949 or ICAI guidelines including those approved in the 447th Council Meeting.</p>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>Shashikant Ghadage & Associates</h3>
+      <div class="credentials">Chartered Accountants</div>
+      <p>ICAI Membership No.: 614759<br>Firm Registration No.: 158188W<br><br>Office 118, 1st Floor, Below Digi Hold Cinema,<br>Oxy Gold, Baburao Nagar, Shirur, Pune 412207</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="index.html#services">GST & Income Tax</a>
+      <a href="index.html#services">Audit & Assurance</a>
+      <a href="index.html#services">Company Registration</a>
+      <a href="automation-services.html">Technology Services</a>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <a href="index.html#tools">Financial Calculators</a>
+      <a href="compliance-calendar.html">Compliance Calendar</a>
+      <a href="msme-subsidy-guide.html">MSME Subsidy Guide</a>
+      <a href="presumptive-tax-guide.html">Presumptive Tax Guide</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p><a href="tel:+918446208488" style="color:rgba(255,255,255,0.5); text-decoration:none;">+91 84462 08488</a><br>
+      <a href="mailto:info@cashashikantghadage.ca" style="color:rgba(255,255,255,0.5); text-decoration:none;">info@cashashikantghadage.ca</a><br><br>
+      Mon &ndash; Sat: 10 AM &ndash; 7 PM</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Shashikant Ghadage & Associates. All Rights Reserved.</p>
+    <p><a href="https://cashashikantghadage.ca">cashashikantghadage.ca</a></p>
+  </div>
+</footer>
+
+<script>
+/* Subsidy Policy Data — Update when state government changes PSI Policy */
+var subsidyPolicy = {
+  "pune_city": { zone: "Zone A",  desc: "Developed Area (Limited MSME Incentives)", percentage: 0,  years: 0 },
+  "shirur":    { zone: "Zone C",  desc: "Developing Area",                          percentage: 40, years: 7 },
+  "daund":     { zone: "Zone D",  desc: "Lesser Developed Area",                    percentage: 60, years: 10 },
+  "parner":    { zone: "Zone D+", desc: "Least Developed Area",                     percentage: 70, years: 10 },
+  "shrigonda": { zone: "Zone D+", desc: "Least Developed Area",                     percentage: 70, years: 10 },
+  "other_d":   { zone: "Zone D+", desc: "Least Developed Area",                     percentage: 70, years: 10 }
+};
+
+var formatINR = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 });
+
+function calculateSubsidy() {
+  var taluka = document.getElementById('talukaSelect').value;
+  var investment = parseFloat(document.getElementById('investmentAmount').value) || 0;
+  var resultBox = document.getElementById('resultBox');
+  if (taluka === "none") { resultBox.classList.remove('active'); return; }
+  var policy = subsidyPolicy[taluka];
+  var ceiling = investment * (policy.percentage / 100);
+  document.getElementById('zoneBadge').innerText = policy.zone;
+  document.getElementById('zoneDesc').innerText = policy.desc;
+  document.getElementById('maxPercentage').innerText = policy.percentage + "%";
+  document.getElementById('eligibilityPeriod').innerText = policy.years + " Years";
+  var ceilingEl = document.getElementById('estimatedCeiling');
+  if (policy.percentage === 0) {
+    ceilingEl.innerText = "Not Eligible";
+    ceilingEl.style.color = "#f87171";
+  } else {
+    ceilingEl.innerText = formatINR.format(ceiling);
+    ceilingEl.style.color = "var(--gold)";
+  }
+  resultBox.classList.add('active');
+}
+
+/* Scroll animations */
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(function(el) { observer.observe(el); });
+
+/* Hamburger */
+function toggleMenu() { document.querySelector('.nav-links').classList.toggle('mobile-open'); }
+</script>
+</body>
+</html>

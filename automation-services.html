@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Technology-Assisted Services | Shashikant Ghadage & Associates</title>
+  <meta name="description" content="Information about technology-assisted accounting services offered by Shashikant Ghadage & Associates including Tally TDL customisation, Excel automation, and GST reconciliation.">
+  <meta property="og:title" content="Technology-Assisted Services | Shashikant Ghadage & Associates">
+  <meta property="og:description" content="Learn about our technology-assisted accounting and compliance services.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="canonical" href="https://cashashikantghadage.ca/automation-services.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-content { max-width: 1100px; margin: 0 auto; padding: 40px 20px 60px; }
+
+    /* Service Cards Grid */
+    .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; margin-bottom: 50px; }
+
+    .tech-card {
+      background: var(--white); padding: 36px; border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05); transition: transform 0.3s;
+      border: 1px solid rgba(0,0,0,0.06); position: relative; overflow: hidden;
+    }
+    .tech-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 3px; background: var(--gold); transform: scaleX(0); transition: transform 0.3s;
+    }
+    .tech-card:hover { transform: translateY(-4px); }
+    .tech-card:hover::before { transform: scaleX(1); }
+
+    .tech-icon {
+      font-size: 2em; margin-bottom: 20px; display: inline-flex;
+      padding: 14px; background: var(--cream); border-radius: 12px;
+    }
+    .tech-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--navy); margin-bottom: 14px; font-size: 1.35em; font-weight: 600;
+    }
+    .tech-card p { color: var(--muted); font-size: 14px; margin-bottom: 18px; line-height: 1.8; }
+
+    .feature-list { list-style: none; }
+    .feature-list li {
+      margin-bottom: 10px; padding-left: 22px; position: relative;
+      font-size: 13px; font-weight: 500; color: var(--navy);
+    }
+    .feature-list li::before { content: '\2192'; position: absolute; left: 0; color: var(--gold); font-weight: bold; }
+
+    /* Comparison Section */
+    .comparison-section {
+      background: var(--navy); border-radius: 16px; padding: 48px;
+      color: var(--white); margin-bottom: 50px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;
+    }
+    @media (max-width: 800px) { .comparison-section { grid-template-columns: 1fr; padding: 32px; } }
+
+    .comparison-text h3 {
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--gold); font-size: 1.8em; margin-bottom: 16px;
+    }
+    .comparison-text p { color: rgba(255,255,255,0.65); margin-bottom: 16px; font-size: 15px; line-height: 1.8; }
+
+    .workflow-table {
+      background: rgba(255,255,255,0.05); padding: 28px;
+      border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);
+    }
+    .wf-header {
+      display: flex; justify-content: space-between; margin-bottom: 16px;
+      font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.4);
+    }
+    .wf-row {
+      display: flex; justify-content: space-between; margin-bottom: 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 14px;
+      font-size: 14px;
+    }
+    .wf-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .wf-task { color: var(--white); }
+    .wf-manual { color: rgba(255,255,255,0.5); }
+    .wf-assisted { color: #34d399; font-weight: 600; }
+
+    /* CTA Section */
+    .cta-section {
+      background: var(--cream); border: 1px solid var(--border);
+      padding: 40px; border-radius: 16px; text-align: center;
+    }
+    .cta-section h3 {
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--navy); margin-bottom: 12px; font-size: 1.6em;
+    }
+    .cta-section p {
+      color: var(--muted); font-size: 15px; margin-bottom: 28px;
+      max-width: 650px; margin-left: auto; margin-right: auto; line-height: 1.8;
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="site-nav">
+  <a class="logo" href="index.html">
+    <div class="logo-icon">SG</div>
+    <div class="logo-text"><span>Shashikant Ghadage</span><small>& Associates</small></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#tools">Tools</a></li>
+    <li><a href="compliance-calendar.html">Calendar</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="secure-contact.html">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="secure-contact.html">Get In Touch</a>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Toggle navigation">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <h1>Technology-Assisted <em>Accounting Services</em></h1>
+  <p>We utilise financial technology tools — including Tally TDL customisation, Excel Power Query, and data modelling — as part of our professional service delivery to improve accuracy and efficiency.</p>
+</div>
+
+<!-- CONTENT -->
+<div class="page-content">
+
+  <div class="section-header fade-up" style="text-align:center; margin-bottom:40px;">
+    <div class="section-tag">Our Capabilities</div>
+    <h2>Service Areas</h2>
+    <p class="section-sub" style="margin:8px auto 0;">These technology tools are deployed as part of our chartered accountancy practice under ICAI Management Consultancy Services (MCS) guidelines.</p>
+  </div>
+
+  <div class="tech-grid">
+    <div class="tech-card fade-up">
+      <div class="tech-icon">&#128202;</div>
+      <h3>Data Modelling & Financial Reporting</h3>
+      <p>We utilise Excel Power Query and data analysis tools to merge datasets from multiple sources, improving accuracy in financial statement preparation and reporting.</p>
+      <ul class="feature-list">
+        <li>CMA Report Preparation for Banks</li>
+        <li>Bank Reconciliation Assistance</li>
+        <li>Consolidated Multi-Branch Reporting</li>
+      </ul>
+    </div>
+
+    <div class="tech-card fade-up">
+      <div class="tech-icon">&#9881;</div>
+      <h3>Tally Customisation (TDL)</h3>
+      <p>We develop custom Tally Definition Language (TDL) configurations tailored to the specific workflows of manufacturing and trading businesses.</p>
+      <ul class="feature-list">
+        <li>Suspense Account Management</li>
+        <li>Customised Invoicing Formats</li>
+        <li>Inventory & Godown Reporting</li>
+      </ul>
+    </div>
+
+    <div class="tech-card fade-up">
+      <div class="tech-icon">&#128260;</div>
+      <h3>GST Reconciliation & Compliance</h3>
+      <p>We deploy data matching processes to reconcile purchase invoices against portal data (GSTR-2B) to help identify Input Tax Credit discrepancies.</p>
+      <ul class="feature-list">
+        <li>GSTR-2A/2B vs Books Reconciliation</li>
+        <li>Section 43B(h) MSME Payment Tracking</li>
+        <li>E-Way Bill Compliance Verification</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Comparison -->
+  <div class="comparison-section fade-up">
+    <div class="comparison-text">
+      <h3>Efficiency Through Technology</h3>
+      <p>As part of our professional engagement, we utilise technology tools to reduce manual effort in routine accounting tasks, allowing your accounts team to focus on operational priorities.</p>
+      <p style="font-size:13px; color:rgba(255,255,255,0.4);">Indicative time comparisons based on typical engagement experience.</p>
+    </div>
+    <div class="workflow-table">
+      <div class="wf-header">
+        <span>Task</span>
+        <span>Manual</span>
+        <span>Assisted</span>
+      </div>
+      <div class="wf-row">
+        <span class="wf-task">Bank Reconciliation (500+ entries)</span>
+        <span class="wf-manual">~3 Days</span>
+        <span class="wf-assisted">Significantly Reduced</span>
+      </div>
+      <div class="wf-row">
+        <span class="wf-task">CMA Data for Term Loan</span>
+        <span class="wf-manual">~1 Week</span>
+        <span class="wf-assisted">~1 Day</span>
+      </div>
+      <div class="wf-row">
+        <span class="wf-task">Suspense Account Review</span>
+        <span class="wf-manual">Month-End</span>
+        <span class="wf-assisted">Ongoing Monitoring</span>
+      </div>
+      <div class="wf-row">
+        <span class="wf-task">GSTR-2B ITC Matching</span>
+        <span class="wf-manual">Manual Review</span>
+        <span class="wf-assisted">Systematic Matching</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section fade-up">
+    <h3>Interested in Technology-Assisted Accounting?</h3>
+    <p>If you would like to discuss how these services can be applied to your business processes, please reach out through our contact page for a professional consultation.</p>
+    <a href="secure-contact.html" class="btn-primary">Contact Our Office</a>
+  </div>
+
+</div>
+
+<!-- DISCLAIMER -->
+<div class="disclaimer-bar">
+  <p><strong>Disclaimer:</strong> This website is an informational resource maintained by Shashikant Ghadage & Associates (FRN: 158188W), Chartered Accountants registered with ICAI. The technology services described are provided as part of our professional chartered accountancy practice under ICAI MCS guidelines. This content does not constitute solicitation or advertisement under the Chartered Accountants Act, 1949 or ICAI guidelines including those approved in the 447th Council Meeting.</p>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>Shashikant Ghadage & Associates</h3>
+      <div class="credentials">Chartered Accountants</div>
+      <p>ICAI Membership No.: 614759<br>Firm Registration No.: 158188W<br><br>Office 118, 1st Floor, Below Digi Hold Cinema,<br>Oxy Gold, Baburao Nagar, Shirur, Pune 412207</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="index.html#services">GST & Income Tax</a>
+      <a href="index.html#services">Audit & Assurance</a>
+      <a href="index.html#services">Company Registration</a>
+      <a href="automation-services.html">Technology Services</a>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <a href="index.html#tools">Financial Calculators</a>
+      <a href="compliance-calendar.html">Compliance Calendar</a>
+      <a href="msme-subsidy-guide.html">MSME Subsidy Guide</a>
+      <a href="presumptive-tax-guide.html">Presumptive Tax Guide</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p><a href="tel:+918446208488" style="color:rgba(255,255,255,0.5); text-decoration:none;">+91 84462 08488</a><br>
+      <a href="mailto:info@cashashikantghadage.ca" style="color:rgba(255,255,255,0.5); text-decoration:none;">info@cashashikantghadage.ca</a><br><br>
+      Mon &ndash; Sat: 10 AM &ndash; 7 PM</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Shashikant Ghadage & Associates. All Rights Reserved.</p>
+    <p><a href="https://cashashikantghadage.ca">cashashikantghadage.ca</a></p>
+  </div>
+</footer>
+
+<script>
+/* Scroll animations */
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(function(el) { observer.observe(el); });
+
+/* Hamburger */
+function toggleMenu() { document.querySelector('.nav-links').classList.toggle('mobile-open'); }
+</script>
+</body>
+</html>
