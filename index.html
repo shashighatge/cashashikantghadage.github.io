@@ -319,9 +319,9 @@
     <p class="section-sub">Calculators for GST, TDS, and Income Tax estimation. These tools provide approximate results for informational purposes only and do not constitute professional advice.</p>
   </div>
   <div class="tools-tabs fade-up">
-    <button class="tool-tab active" onclick="switchTab('gst')">GST Calculator</button>
-    <button class="tool-tab" onclick="switchTab('tds')">TDS Calculator</button>
-    <button class="tool-tab" onclick="switchTab('tax')">Income Tax Estimator</button>
+    <button class="tool-tab active" onclick="switchTab('gst', this)">GST Calculator</button>
+    <button class="tool-tab" onclick="switchTab('tds', this)">TDS Calculator</button>
+    <button class="tool-tab" onclick="switchTab('tax', this)">Income Tax Estimator</button>
   </div>
 
   <!-- GST CALCULATOR -->
@@ -647,11 +647,11 @@
 
 <script>
 /* Tab Switching */
-function switchTab(id) {
+function switchTab(id, btnElement) {
   document.querySelectorAll('.tool-panel').forEach(function(p) { p.classList.remove('active'); });
   document.querySelectorAll('.tool-tab').forEach(function(b) { b.classList.remove('active'); });
   document.getElementById(id).classList.add('active');
-  event.target.classList.add('active');
+  btnElement.classList.add('active');
 }
 
 /* GST Calculator */
@@ -734,7 +734,10 @@ function calcTax() {
     else if (taxable <= 2000000) tax = 120000 + (taxable - 1600000) * 0.20;
     else if (taxable <= 2400000) tax = 200000 + (taxable - 2000000) * 0.25;
     else tax = 300000 + (taxable - 2400000) * 0.30;
+    /* Sec 87A rebate with marginal relief: tax is nil up to 12L taxable,
+       and just above 12L it cannot exceed the income earned over 12L. */
     if (taxable <= 1200000) tax = 0;
+    else tax = Math.min(tax, taxable - 1200000);
   } else {
     regime_label = 'Old Regime';
     taxable = Math.max(0, income - deductions - 50000);
@@ -809,8 +812,16 @@ setTimeout(animateCounters, 800);
 
 /* Hamburger menu */
 function toggleMenu() {
+  document.querySelector('.site-nav').classList.toggle('menu-open');
   document.querySelector('.nav-links').classList.toggle('mobile-open');
 }
+/* Close mobile menu after tapping a nav link */
+document.querySelectorAll('.nav-links a').forEach(function(link) {
+  link.addEventListener('click', function() {
+    document.querySelector('.site-nav').classList.remove('menu-open');
+    document.querySelector('.nav-links').classList.remove('mobile-open');
+  });
+});
 </script>
 </body>
 </html>
