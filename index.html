@@ -722,11 +722,12 @@ function calcTax() {
   var age = document.getElementById('tax-age').value;
   if (!income || isNaN(income)) { alert('Please enter gross income'); return; }
   var taxable, tax = 0, regime_label;
+  var stdDeduction = 0, taxBeforeRebate = 0, rebate = 0, marginalRelief = false;
   var fmt = function(v) { return '\u20B9 ' + v.toLocaleString('en-IN', {minimumFractionDigits:0, maximumFractionDigits:0}); };
   if (regime === 'new') {
     regime_label = 'New Regime';
-    var std_deduction = 75000;
-    taxable = Math.max(0, income - std_deduction);
+    stdDeduction = 75000;
+    taxable = Math.max(0, income - stdDeduction);
     if (taxable <= 400000) tax = 0;
     else if (taxable <= 800000) tax = (taxable - 400000) * 0.05;
     else if (taxable <= 1200000) tax = 20000 + (taxable - 800000) * 0.10;
@@ -734,19 +735,28 @@ function calcTax() {
     else if (taxable <= 2000000) tax = 120000 + (taxable - 1600000) * 0.20;
     else if (taxable <= 2400000) tax = 200000 + (taxable - 2000000) * 0.25;
     else tax = 300000 + (taxable - 2400000) * 0.30;
+    taxBeforeRebate = tax;
     /* Sec 87A rebate with marginal relief: tax is nil up to 12L taxable,
        and just above 12L it cannot exceed the income earned over 12L. */
-    if (taxable <= 1200000) tax = 0;
-    else tax = Math.min(tax, taxable - 1200000);
+    if (taxable <= 1200000) {
+      tax = 0;
+    } else {
+      var cappedTax = Math.min(taxBeforeRebate, taxable - 1200000);
+      if (cappedTax < taxBeforeRebate) { tax = cappedTax; marginalRelief = true; }
+    }
+    rebate = taxBeforeRebate - tax;
   } else {
     regime_label = 'Old Regime';
-    taxable = Math.max(0, income - deductions - 50000);
+    stdDeduction = 50000;
+    taxable = Math.max(0, income - deductions - stdDeduction);
     var basicExempt = age === 'below60' ? 250000 : age === '60to80' ? 300000 : 500000;
     if (taxable <= basicExempt) tax = 0;
     else if (taxable <= 500000) tax = (taxable - basicExempt) * 0.05;
     else if (taxable <= 1000000) tax = (500000 - basicExempt)*0.05 + (taxable - 500000)*0.20;
     else tax = (500000 - basicExempt)*0.05 + 500000*0.20 + (taxable - 1000000)*0.30;
-    if (taxable <= 500000) tax = 0;
+    taxBeforeRebate = tax;
+    if (taxable <= 500000) tax = 0;   /* Sec 87A rebate (old regime) */
+    rebate = taxBeforeRebate - tax;
   }
   var surcharge = 0;
   if (taxable > 10000000) surcharge = tax * 0.15;
@@ -757,12 +767,29 @@ function calcTax() {
   var effective = income > 0 ? ((total/income)*100).toFixed(2) : 0;
   var html = '<div class="result-title">TAX ESTIMATION &middot; FY 2025-26</div>';
   html += '<div class="result-row"><span class="lbl">Regime</span><span class="val">' + regime_label + '</span></div>';
+  html += '<div class="result-row"><span class="lbl">Gross Income</span><span class="val">' + fmt(income) + '</span></div>';
+  html += '<div class="result-row"><span class="lbl">Less: Standard Deduction</span><span class="val">- ' + fmt(stdDeduction) + '</span></div>';
+  if (regime === 'old' && deductions > 0) {
+    html += '<div class="result-row"><span class="lbl">Less: Deductions (80C, 80D, etc.)</span><span class="val">- ' + fmt(deductions) + '</span></div>';
+  }
   html += '<div class="result-row"><span class="lbl">Taxable Income</span><span class="val">' + fmt(taxable) + '</span></div>';
+  if (rebate > 0) {
+    html += '<div class="result-row"><span class="lbl">Tax as per Slab Rates</span><span class="val">' + fmt(taxBeforeRebate) + '</span></div>';
+    html += '<div class="result-row"><span class="lbl">Less: Rebate u/s 87A' + (marginalRelief ? ' (Marginal Relief)' : '') + '</span><span class="val">- ' + fmt(rebate) + '</span></div>';
+  }
   html += '<div class="result-row"><span class="lbl">Income Tax</span><span class="val">' + fmt(tax) + '</span></div>';
   if (surcharge > 0) html += '<div class="result-row"><span class="lbl">Surcharge</span><span class="val">' + fmt(surcharge) + '</span></div>';
   html += '<div class="result-row"><span class="lbl">Health & Ed. Cess (4%)</span><span class="val">' + fmt(cess) + '</span></div>';
   html += '<div class="result-row result-total"><span class="lbl">Total Tax Liability</span><span class="val">' + fmt(total) + '</span></div>';
   html += '<div class="result-row"><span class="lbl">Effective Tax Rate</span><span class="val">' + effective + '%</span></div>';
+  if (marginalRelief) {
+    html += '<div style="margin-top:16px; padding-top:14px; border-top:1px solid rgba(201,168,76,0.25); font-size:11px; line-height:1.7; color:rgba(255,255,255,0.5);">' +
+      '<strong style="color:var(--gold); font-weight:500;">Marginal Relief applied:</strong> ' +
+      'Income up to &#8377;12,00,000 is fully rebated under Sec 87A. As your taxable income is &#8377;' +
+      taxable.toLocaleString('en-IN') + ' (i.e. &#8377;' + (taxable - 1200000).toLocaleString('en-IN') +
+      ' over the &#8377;12,00,000 limit), the tax payable is restricted to that excess amount, instead of the full slab tax of ' +
+      fmt(taxBeforeRebate) + '.</div>';
+  }
   document.getElementById('tax-result').innerHTML = html;
 }
 
