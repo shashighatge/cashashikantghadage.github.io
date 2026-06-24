@@ -701,6 +701,29 @@ function sgaSaveLead(payload) {
   } catch (err) { /* fire-and-forget */ }
 }
 
+/* WhatsApp send chooser — lets the visitor pick App (incl. Business) or Web */
+function sgaWhatsApp(text) {
+  var num = '918446208488';
+  var appUrl = 'https://wa.me/' + num + '?text=' + text;
+  var webUrl = 'https://web.whatsapp.com/send?phone=' + num + '&text=' + text;
+  var ov = document.createElement('div');
+  ov.className = 'wa-modal';
+  ov.innerHTML =
+    '<div class="wa-card">' +
+      '<button class="wa-close" aria-label="Close">&times;</button>' +
+      '<div class="wa-icon">&#128241;</div>' +
+      '<h3>Send your enquiry on WhatsApp</h3>' +
+      '<p>Choose how to open WhatsApp. On your phone you can pick WhatsApp or WhatsApp Business if both are installed.</p>' +
+      '<a class="wa-btn wa-btn-green" href="' + appUrl + '" target="_blank" rel="noopener">Open WhatsApp App</a>' +
+      '<a class="wa-btn wa-btn-outline" href="' + webUrl + '" target="_blank" rel="noopener">Open WhatsApp Web</a>' +
+    '</div>';
+  document.body.appendChild(ov);
+  function close() { if (ov.parentNode) ov.parentNode.removeChild(ov); }
+  ov.addEventListener('click', function(e) { if (e.target === ov) close(); });
+  ov.querySelector('.wa-close').addEventListener('click', close);
+  ov.querySelectorAll('.wa-btn').forEach(function(b) { b.addEventListener('click', function() { setTimeout(close, 400); }); });
+}
+
 /* ── Tools access gate ── */
 function toolsGateInit() {
   var wrap = document.getElementById('toolsWrap');
@@ -893,7 +916,7 @@ function submitContact(e) {
     '%0AEmail: ' + encodeURIComponent(email) +
     '%0AService: ' + encodeURIComponent(service) +
     '%0AMessage: ' + encodeURIComponent(message);
-  window.open('https://wa.me/918446208488?text=' + text, '_blank');
+  sgaWhatsApp(text);
   document.getElementById('contactForm').reset();
 }
 
