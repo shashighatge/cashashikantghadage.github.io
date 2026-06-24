@@ -337,6 +337,7 @@
     <div class="section-tag">Informational Tools</div>
     <h2>Financial Calculators</h2>
     <p class="section-sub">Calculators for GST, TDS, and Income Tax estimation. These tools provide approximate results for informational purposes only and do not constitute professional advice.</p>
+    <button class="share-btn" style="margin-top:18px;" onclick="sgaShare('https://cashashikantghadage.ca/#tools','Free Financial Calculators &mdash; SG &amp; Associates','Use these free GST, TDS &amp; Income Tax calculators by Shashikant Ghadage &amp; Associates:')">&#128279; Share Calculators</button>
   </div>
   <div id="toolsWrap" class="fade-up">
     <!-- Lead-capture gate (activates only when SGA_LEAD_URL is set) -->
@@ -722,6 +723,37 @@ function sgaWhatsApp(text) {
   ov.addEventListener('click', function(e) { if (e.target === ov) close(); });
   ov.querySelector('.wa-close').addEventListener('click', close);
   ov.querySelectorAll('.wa-btn').forEach(function(b) { b.addEventListener('click', function() { setTimeout(close, 400); }); });
+}
+
+/* Share — native share sheet on mobile; WhatsApp + Copy-link fallback */
+function sgaShare(url, title, text) {
+  if (navigator.share) {
+    navigator.share({ title: title, text: text, url: url }).catch(function() {});
+    return;
+  }
+  var waText = encodeURIComponent(text + ' ' + url);
+  var ov = document.createElement('div');
+  ov.className = 'wa-modal';
+  ov.innerHTML =
+    '<div class="wa-card">' +
+      '<button class="wa-close" aria-label="Close">&times;</button>' +
+      '<div class="wa-icon">&#128279;</div>' +
+      '<h3>Share</h3>' +
+      '<p>' + text + '</p>' +
+      '<a class="wa-btn wa-btn-green" href="https://wa.me/?text=' + waText + '" target="_blank" rel="noopener">Share on WhatsApp</a>' +
+      '<button class="wa-btn wa-btn-outline" type="button" id="sgaCopyBtn">Copy Link</button>' +
+    '</div>';
+  document.body.appendChild(ov);
+  function close() { if (ov.parentNode) ov.parentNode.removeChild(ov); }
+  ov.addEventListener('click', function(e) { if (e.target === ov) close(); });
+  ov.querySelector('.wa-close').addEventListener('click', close);
+  ov.querySelector('.wa-btn-green').addEventListener('click', function() { setTimeout(close, 400); });
+  ov.querySelector('#sgaCopyBtn').addEventListener('click', function() {
+    var btn = this;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(function() { btn.textContent = 'Link Copied!'; }).catch(function() { window.prompt('Copy this link:', url); });
+    } else { window.prompt('Copy this link:', url); }
+  });
 }
 
 /* ── Tools access gate ── */

@@ -305,3 +305,13 @@ h2 {
 .wa-btn-outline:hover { border-color: var(--gold); color: var(--gold); }
 .wa-close { position: absolute; top: 12px; right: 16px; background: none; border: none; font-size: 24px; line-height: 1; color: var(--muted); cursor: pointer; }
 .wa-close:hover { color: var(--navy); }
+
+/* ── Share button ───────────────────────────────────────────── */
+.share-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; color: var(--navy);
+  border: 1.5px solid rgba(13,27,62,0.2); border-radius: 8px;
+  padding: 9px 18px; font-size: 13px; font-weight: 600; cursor: pointer;
+  font-family: 'Jost', sans-serif; letter-spacing: 0.3px; transition: all 0.2s;
+}
+.share-btn:hover { border-color: var(--gold); color: var(--gold); }
