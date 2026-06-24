@@ -171,6 +171,23 @@
   .about-point .num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 700; color: var(--gold); }
   .about-point .desc { font-size: 12px; color: var(--muted); margin-top: 4px; line-height: 1.5; }
 
+  /* ── Associated Firm ── */
+  .assoc-firm { margin-top: 64px; padding-top: 48px; border-top: 1px solid rgba(13,27,62,0.1); }
+  .assoc-header { text-align: center; max-width: 640px; margin: 0 auto 36px; }
+  .assoc-header h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; font-weight: 600; color: var(--navy); margin-bottom: 10px; }
+  .assoc-header p { font-size: 15px; color: var(--muted); line-height: 1.8; }
+  .office-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 900px; margin: 0 auto; }
+  .office-card { background: var(--white); border-radius: 16px; overflow: hidden; border: 1px solid rgba(0,0,0,0.06); transition: all 0.3s; }
+  .office-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(13,27,62,0.1); }
+  .office-photo { height: 160px; background: var(--navy); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: rgba(255,255,255,0.5); }
+  .office-photo span { font-size: 2.4rem; opacity: 0.7; }
+  .office-photo small { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+  .office-body { padding: 24px 26px; }
+  .office-badge { display: inline-block; background: rgba(201,168,76,0.12); color: var(--gold); font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 4px 12px; border-radius: 12px; margin-bottom: 12px; }
+  .office-body h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+  .office-body p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+  @media (max-width: 768px) { .office-grid { grid-template-columns: 1fr; } }
+
   /* ── Why Us ── */
   #why { background: var(--white); }
   .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
@@ -504,9 +521,10 @@
       <h3>CA Shashikant Ghadage</h3>
       <p>Founder & Principal Partner<br>Shashikant Ghadage & Associates, Pune</p>
       <ul class="qual-list">
+        <li>M.Com, LLB, ACA</li>
         <li>Chartered Accountant (ICAI)</li>
         <li>ICAI Membership No.: 614759</li>
-        <li>Firm Registration No. (FRN): 158188W</li>
+        <li>Partner, Tamhane Ghadage and Company</li>
         <li>Focus Areas: GST, Direct Tax & Audit</li>
         <li>Registered Statutory Auditor</li>
         <li>Practicing since 2021</li>
@@ -533,6 +551,33 @@
         <div class="about-point">
           <div class="num" style="font-size:1.4rem;">ICAI</div>
           <div class="desc">Registered Member & Firm</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ASSOCIATED FIRM -->
+  <div class="assoc-firm fade-up">
+    <div class="assoc-header">
+      <div class="section-tag">Associated Firm</div>
+      <h3>Tamhane Ghadage and Company</h3>
+      <p>CA Shashikant Ghadage is a Partner at Tamhane Ghadage and Company, Chartered Accountants, serving clients from two office locations across Pune.</p>
+    </div>
+    <div class="office-grid">
+      <div class="office-card">
+        <div class="office-photo"><span>&#127970;</span><small>Office photo coming soon</small></div>
+        <div class="office-body">
+          <span class="office-badge">Head Office</span>
+          <h4>Wagholi, Pune</h4>
+          <p>C 303, EPIC Mall, 3rd Floor,<br>Above Dignity9 Hospital, Kesnand Road,<br>Wagholi, Pune 412207</p>
+        </div>
+      </div>
+      <div class="office-card">
+        <div class="office-photo"><span>&#127970;</span><small>Office photo coming soon</small></div>
+        <div class="office-body">
+          <span class="office-badge">Branch Office</span>
+          <h4>Shirur, Pune</h4>
+          <p>Office 118, 1st Floor, Below Digi Gold,<br>Oxy Gold, Baburao Nagar, Nagar Pune Road,<br>Shirur, Pune 412207</p>
         </div>
       </div>
     </div>
