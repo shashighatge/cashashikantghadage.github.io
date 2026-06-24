@@ -326,3 +326,6 @@ h2 {
 }
 .wa-float:hover { transform: scale(1.08); }
 @media (max-width: 480px) { .wa-float { width: 52px; height: 52px; bottom: 18px; right: 18px; } }
+
+/* ── Honeypot (spam trap) ── */
+.hp-field { position:absolute; left:-9999px; top:-9999px; width:1px; height:1px; opacity:0; overflow:hidden; }

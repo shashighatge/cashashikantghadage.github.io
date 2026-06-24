@@ -425,6 +425,7 @@
           <label>Mobile Number</label>
           <input type="tel" id="gate-mobile" placeholder="10-digit mobile number" maxlength="10">
         </div>
+        <input type="text" id="hp-gate" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
         <button class="calc-btn" onclick="unlockTools()">Access Calculators</button>
         <p class="gate-note">We respect your privacy. Your details are used only to assist you with your enquiry and are kept strictly confidential.</p>
       </div>
@@ -808,6 +809,7 @@
           <label>Message</label>
           <textarea id="cf-message" placeholder="Brief description of your requirement..."></textarea>
         </div>
+        <input type="text" id="hp-contact" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
         <button type="submit" class="submit-btn">Send Enquiry</button>
       </form>
     </div>
@@ -843,7 +845,7 @@
     <div class="footer-brand">
       <h3>Shashikant Ghadage & Associates</h3>
       <div class="credentials">Chartered Accountants</div>
-      <p>ICAI Membership No.: 614759<br>Firm Registration No.: 158188W<br><br>Office 118, 1st Floor, Below Digi Gold,<br>Oxy Gold, Baburao Nagar, Shirur, Pune 412210</p>
+      <p>ICAI Membership No.: 614759<br>Firm Registration No.: 158188W<br><br><strong style="color:rgba(255,255,255,0.7);">Head Office:</strong> C 303, EPIC Mall, Kesnand Road, Wagholi, Pune 412207<br><br><strong style="color:rgba(255,255,255,0.7);">Shirur Office:</strong> Office 118, Below Digi Gold, Baburao Nagar, Nagar Pune Road, Shirur, Pune 412210</p>
     </div>
     <div class="footer-col">
       <h4>Services</h4>
@@ -857,6 +859,8 @@
       <h4>Resources</h4>
       <a href="#tools">Financial Calculators</a>
       <a href="compliance-calendar.html">Compliance Calendar</a>
+      <a href="index.html#areas">Areas We Serve</a>
+      <a href="index.html#faq">FAQ</a>
       <a href="msme-subsidy-guide.html">MSME Subsidy Guide</a>
       <a href="presumptive-tax-guide.html">Presumptive Tax Guide</a>
     </div>
@@ -869,7 +873,7 @@
   </div>
   <div class="footer-bottom">
     <p>&copy; 2026 Shashikant Ghadage & Associates. All Rights Reserved.</p>
-    <p><a href="https://cashashikantghadage.ca">cashashikantghadage.ca</a></p>
+    <p><a href="privacy-policy.html" style="color:var(--gold); text-decoration:none;">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="https://cashashikantghadage.ca">cashashikantghadage.ca</a></p>
   </div>
 </footer>
 
@@ -953,6 +957,7 @@ function toolsGateInit() {
   }
 }
 function unlockTools() {
+  if ((document.getElementById(hp-gate)||{}).value) { localStorage.setItem(sgaToolsUnlocked,1); document.getElementById(toolsWrap).classList.remove(locked); return; } /* hp-gate trap */
   var name = (document.getElementById('gate-name').value || '').trim();
   var mobile = (document.getElementById('gate-mobile').value || '').trim();
   if (name.length < 2) { alert('Please enter your name'); return; }
@@ -1130,6 +1135,7 @@ document.getElementById('deduction-group').style.display = 'none';
 /* Contact form */
 function submitContact(e) {
   e.preventDefault();
+  if ((document.getElementById(hp-contact)||{}).value) return; /* hp-contact trap */
   var name = document.getElementById('cf-name').value;
   var phone = document.getElementById('cf-phone').value;
   var email = document.getElementById('cf-email').value || 'Not provided';
