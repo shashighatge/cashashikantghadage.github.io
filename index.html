@@ -122,6 +122,26 @@
   .tool-inputs h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: var(--navy); margin-bottom: 6px; }
   .tool-inputs p { font-size: 14px; color: var(--muted); margin-bottom: 28px; }
 
+  /* ── Tools lead gate ── */
+  #toolsWrap { position: relative; }
+  .tools-gate { display: none; }
+  #toolsWrap.locked .tools-inner { filter: blur(7px); pointer-events: none; user-select: none; max-height: 560px; overflow: hidden; }
+  #toolsWrap.locked .tools-gate {
+    display: flex; position: absolute; inset: 0; z-index: 5;
+    align-items: center; justify-content: center; padding: 20px;
+  }
+  .gate-card {
+    background: var(--white); border-radius: 20px; padding: 40px 36px;
+    max-width: 440px; width: 100%; text-align: center;
+    box-shadow: 0 24px 60px rgba(13,27,62,0.25); border: 1px solid var(--border);
+  }
+  .gate-card .gate-icon { font-size: 2.4rem; margin-bottom: 12px; }
+  .gate-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+  .gate-card > p { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 24px; }
+  .gate-card .form-group { text-align: left; }
+  .gate-card .calc-btn { margin-top: 8px; }
+  .gate-note { font-size: 11px; color: var(--muted); margin-top: 16px; line-height: 1.6; }
+
   /* ── About ── */
   #about { background: var(--cream); }
   .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
@@ -318,7 +338,27 @@
     <h2>Financial Calculators</h2>
     <p class="section-sub">Calculators for GST, TDS, and Income Tax estimation. These tools provide approximate results for informational purposes only and do not constitute professional advice.</p>
   </div>
-  <div class="tools-tabs fade-up">
+  <div id="toolsWrap" class="fade-up">
+    <!-- Lead-capture gate (activates only when SGA_LEAD_URL is set) -->
+    <div class="tools-gate" id="toolsGate">
+      <div class="gate-card">
+        <div class="gate-icon">&#128274;</div>
+        <h3>Unlock Free Financial Calculators</h3>
+        <p>Enter your name and mobile number to access our GST, TDS &amp; Income Tax calculators &mdash; completely free.</p>
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" id="gate-name" placeholder="Full name">
+        </div>
+        <div class="form-group">
+          <label>Mobile Number</label>
+          <input type="tel" id="gate-mobile" placeholder="10-digit mobile number" maxlength="10">
+        </div>
+        <button class="calc-btn" onclick="unlockTools()">Access Calculators</button>
+        <p class="gate-note">We respect your privacy. Your details are used only to assist you with your enquiry and are kept strictly confidential.</p>
+      </div>
+    </div>
+    <div class="tools-inner">
+  <div class="tools-tabs">
     <button class="tool-tab active" onclick="switchTab('gst', this)">GST Calculator</button>
     <button class="tool-tab" onclick="switchTab('tds', this)">TDS Calculator</button>
     <button class="tool-tab" onclick="switchTab('tax', this)">Income Tax Estimator</button>
@@ -451,6 +491,8 @@
       </div>
     </div>
   </div>
+    </div><!-- /.tools-inner -->
+  </div><!-- /#toolsWrap -->
 </section>
 
 <!-- ABOUT -->
@@ -646,6 +688,44 @@
 </footer>
 
 <script>
+/* ── Lead-capture backend ──────────────────────────────────────
+   Paste your Google Apps Script Web App URL (ending in /exec)
+   between the quotes to turn ON saving enquiries + tool leads.
+   While empty, the tools stay open and nothing is gated.        */
+var SGA_LEAD_URL = '';
+
+function sgaSaveLead(payload) {
+  if (!SGA_LEAD_URL) return;
+  try {
+    fetch(SGA_LEAD_URL, { method: 'POST', mode: 'no-cors', body: new URLSearchParams(payload) });
+  } catch (err) { /* fire-and-forget */ }
+}
+
+/* ── Tools access gate ── */
+function toolsGateInit() {
+  var wrap = document.getElementById('toolsWrap');
+  if (!wrap) return;
+  /* No backend configured yet, or visitor already unlocked → show tools */
+  if (!SGA_LEAD_URL || localStorage.getItem('sgaToolsUnlocked') === '1') {
+    wrap.classList.remove('locked');
+  } else {
+    wrap.classList.add('locked');
+  }
+}
+function unlockTools() {
+  var name = (document.getElementById('gate-name').value || '').trim();
+  var mobile = (document.getElementById('gate-mobile').value || '').trim();
+  if (name.length < 2) { alert('Please enter your name'); return; }
+  if (!/^[6-9]\d{9}$/.test(mobile)) { alert('Please enter a valid 10-digit mobile number'); return; }
+  sgaSaveLead({
+    name: name, phone: mobile, email: '', service: 'Tools Access',
+    message: 'Accessed financial calculators', source: 'Calculator Tools'
+  });
+  localStorage.setItem('sgaToolsUnlocked', '1');
+  document.getElementById('toolsWrap').classList.remove('locked');
+}
+toolsGateInit();
+
 /* Tab Switching */
 function switchTab(id, btnElement) {
   document.querySelectorAll('.tool-panel').forEach(function(p) { p.classList.remove('active'); });
@@ -807,6 +887,7 @@ function submitContact(e) {
   var email = document.getElementById('cf-email').value || 'Not provided';
   var service = document.getElementById('cf-service').value;
   var message = document.getElementById('cf-message').value || 'No additional details';
+  sgaSaveLead({ name: name, phone: phone, email: email, service: service, message: message, source: 'Contact Form' });
   var text = 'Enquiry from Website%0A%0AName: ' + encodeURIComponent(name) +
     '%0APhone: ' + encodeURIComponent(phone) +
     '%0AEmail: ' + encodeURIComponent(email) +
