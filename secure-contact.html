@@ -260,6 +260,13 @@
 </footer>
 
 <script>
+var SGA_LEAD_URL = 'https://script.google.com/macros/s/AKfycbyG4rbyKMtHT9KYZTdkYKu8EwQbN8n_PF37122nw3QfkMRFyDNlSuv6X0hZf9XRAck2oA/exec';
+function sgaSaveLead(payload) {
+  if (!SGA_LEAD_URL) return;
+  try { fetch(SGA_LEAD_URL, { method: 'POST', mode: 'no-cors', body: new URLSearchParams(payload) }); }
+  catch (err) { /* fire-and-forget */ }
+}
+
 function submitEnquiry(e) {
   e.preventDefault();
   var name = document.getElementById('clientName').value;
@@ -267,6 +274,7 @@ function submitEnquiry(e) {
   var phone = document.getElementById('clientPhone').value;
   var type = document.getElementById('inquiryType').value;
   var message = document.getElementById('clientMessage').value;
+  sgaSaveLead({ name: name, phone: phone, email: '', service: type, message: message + ' (Entity: ' + entity + ')', source: 'Contact Page' });
   var fileInput = document.getElementById('fileProxy');
   var fileNote = fileInput.files.length > 0 ? '%0A%0ANote: I have documents to share.' : '';
 
