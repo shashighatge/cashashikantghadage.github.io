@@ -3,10 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shashikant Ghadage & Associates | Chartered Accountants, Pune</title>
-<meta name="description" content="Shashikant Ghadage & Associates is a Chartered Accountancy firm in Shirur, Pune offering GST, Income Tax, Audit, Company Registration and financial advisory services.">
-<meta property="og:title" content="Shashikant Ghadage & Associates | Chartered Accountants">
-<meta property="og:description" content="Professional CA services — GST, Income Tax, Audit and Company Registration — for businesses across Pune and Maharashtra.">
+<title>CA Shashikant Ghadage & Associates | Chartered Accountants in Shirur, Pune</title>
+<meta name="description" content="Shashikant Ghadage & Associates — Chartered Accountants led by CA Shashikant Ghadage (M.Com, LLB, ACA). GST, Income Tax, Audit, Company Registration & project finance services in Shirur, Ranjangaon MIDC, Shikrapur, Daund, Parner, Wagholi and across Pune.">
+<meta name="keywords" content="CA Shashikant Ghadage, CA in Shirur, Chartered Accountant Shirur, CA Ranjangaon MIDC, CA Supe MIDC, CA Shikrapur, CA Sanaswadi, CA Koregaon Bhima, CA Daund, CA Parner, CA Shrigonda, CA Kashti, CA Wagholi, CA Kharadi, GST consultant Shirur, Income Tax filing Pune, Tamhane Ghadage and Company">
+<meta name="author" content="Shashikant Ghadage & Associates">
+<meta property="og:title" content="CA Shashikant Ghadage & Associates | Chartered Accountants, Shirur & Pune">
+<meta property="og:description" content="Professional CA services — GST, Income Tax, Audit, Company Registration & project finance — across Shirur, Pune and the Nagar–Pune corridor.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://cashashikantghadage.ca">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -240,7 +242,47 @@
     .about-points { grid-template-columns: 1fr 1fr; }
     .tool-card { padding: 24px; }
   }
+
+  /* ── Areas We Serve ── */
+  #areas { background: var(--cream); }
+  .areas-grid { display: flex; flex-wrap: wrap; gap: 10px; max-width: 920px; margin: 0 auto; justify-content: center; }
+  .area-chip {
+    background: var(--white); border: 1px solid var(--border); color: var(--navy);
+    padding: 9px 18px; border-radius: 24px; font-size: 14px; font-weight: 500;
+    display: inline-flex; align-items: center; gap: 7px;
+  }
+  .area-chip::before { content: '\1F4CD'; font-size: 12px; }
+
+  /* ── FAQ ── */
+  #faq { background: var(--white); }
+  .faq-wrap { max-width: 820px; margin: 0 auto; }
+  .faq-item { border: 1px solid var(--border-light); border-radius: 12px; margin-bottom: 14px; overflow: hidden; }
+  .faq-item summary {
+    list-style: none; cursor: pointer; padding: 20px 24px; font-size: 15px; font-weight: 600;
+    color: var(--navy); display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 22px; color: var(--gold); font-weight: 400; }
+  .faq-item[open] summary::after { content: '\2212'; }
+  .faq-item .faq-a { padding: 0 24px 20px; font-size: 14px; color: var(--muted); line-height: 1.8; }
+
+  /* ── Office Maps ── */
+  .office-maps { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 56px; }
+  .map-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; overflow: hidden; }
+  .map-card iframe { width: 100%; height: 220px; border: 0; display: block; }
+  .map-card .map-body { padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .map-card .map-name { font-size: 13px; color: var(--white); font-weight: 600; }
+  .map-card .map-sub { font-size: 11px; color: rgba(255,255,255,0.5); letter-spacing: 1px; text-transform: uppercase; }
+  .map-dir { font-size: 12px; color: var(--gold); text-decoration: none; font-weight: 600; white-space: nowrap; }
+  .map-dir:hover { color: var(--gold-light); }
+  @media (max-width: 768px) { .office-maps { grid-template-columns: 1fr; } }
 </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"AccountingService","name":"Shashikant Ghadage & Associates","alternateName":"CA Shashikant Ghadage","url":"https://cashashikantghadage.ca","telephone":"+91-84462-18488","email":"cashashikantghadage@gmail.com","priceRange":"INR","image":"https://cashashikantghadage.ca/favicon.svg","address":{"@type":"PostalAddress","streetAddress":"Office 118, 1st Floor, Below Digi Gold, Oxy Gold, Baburao Nagar, Nagar Pune Road","addressLocality":"Shirur","addressRegion":"Maharashtra","postalCode":"412210","addressCountry":"IN"},"founder":{"@type":"Person","name":"CA Shashikant Ghadage","jobTitle":"Chartered Accountant","description":"M.Com, LLB, ACA — Chartered Accountant (ICAI), Partner at Tamhane Ghadage and Company"},"openingHours":"Mo-Sa 10:00-19:00","knowsAbout":["GST","Income Tax","Statutory Audit","Tax Audit","Company Registration","ROC Compliance","Project Finance","CMA Data","TDS"],"areaServed":["Shirur","Karegaon","Karde","Supe MIDC","Ranjangaon MIDC","Shikrapur","Sanaswadi","Koregaon Bhima","Daund","Kashti","Navhare","Shrigonda","Parner","Wagholi","Kharadi","Pune"]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What services does Shashikant Ghadage & Associates provide?","acceptedAnswer":{"@type":"Answer","text":"We provide GST registration and return filing, Income Tax filing and planning, statutory and tax audits, company and LLP registration, ROC compliance, accounting, and project finance / CMA data services."}},{"@type":"Question","name":"Which areas do you serve?","acceptedAnswer":{"@type":"Answer","text":"We serve clients in Shirur, Ranjangaon MIDC, Supe MIDC, Shikrapur, Sanaswadi, Koregaon Bhima, Daund, Parner, Shrigonda, Kashti, Wagholi, Kharadi and across Pune."}},{"@type":"Question","name":"Do you help with GST registration and return filing?","acceptedAnswer":{"@type":"Answer","text":"Yes. We handle GST registration, monthly and quarterly returns, annual returns, GSTR-2B reconciliation and notice responses."}},{"@type":"Question","name":"Can you assist with project finance and CMA data for bank loans?","acceptedAnswer":{"@type":"Answer","text":"Yes. We prepare CMA data and project reports for term loans, working capital and MSME funding, and advise on Maharashtra PSI subsidy eligibility."}},{"@type":"Question","name":"How can I contact CA Shashikant Ghadage?","acceptedAnswer":{"@type":"Answer","text":"You can call or WhatsApp +91 84462 18488, email cashashikantghadage@gmail.com, or submit the enquiry form on this website."}}]}
+</script>
 </head>
 <body>
 
@@ -626,6 +668,63 @@
   </div>
 </section>
 
+<!-- AREAS WE SERVE -->
+<section id="areas">
+  <div class="section-header fade-up" style="text-align:center; max-width:640px; margin:0 auto 40px;">
+    <div class="section-tag">Areas We Serve</div>
+    <h2>Serving Clients Across Pune District</h2>
+    <p class="section-sub" style="margin:8px auto 0;">CA Shashikant Ghadage &amp; Associates provides chartered accountancy services to individuals and businesses across Shirur and the surrounding talukas and industrial areas.</p>
+  </div>
+  <div class="areas-grid fade-up">
+    <span class="area-chip">Shirur</span>
+    <span class="area-chip">Karegaon</span>
+    <span class="area-chip">Karde</span>
+    <span class="area-chip">Supe MIDC</span>
+    <span class="area-chip">Ranjangaon MIDC</span>
+    <span class="area-chip">Shikrapur</span>
+    <span class="area-chip">Sanaswadi</span>
+    <span class="area-chip">Koregaon Bhima</span>
+    <span class="area-chip">Daund</span>
+    <span class="area-chip">Kashti</span>
+    <span class="area-chip">Navhare</span>
+    <span class="area-chip">Shrigonda</span>
+    <span class="area-chip">Parner</span>
+    <span class="area-chip">Wagholi</span>
+    <span class="area-chip">Kharadi</span>
+    <span class="area-chip">Pune</span>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-header fade-up" style="text-align:center; max-width:600px; margin:0 auto 40px;">
+    <div class="section-tag">Frequently Asked Questions</div>
+    <h2>Common Questions</h2>
+  </div>
+  <div class="faq-wrap fade-up">
+    <details class="faq-item">
+      <summary>What services does Shashikant Ghadage &amp; Associates provide?</summary>
+      <div class="faq-a">We provide GST registration and return filing, Income Tax filing and planning, statutory and tax audits, company and LLP registration, ROC compliance, accounting, and project finance / CMA data services.</div>
+    </details>
+    <details class="faq-item">
+      <summary>Which areas do you serve?</summary>
+      <div class="faq-a">We serve clients in Shirur, Ranjangaon MIDC, Supe MIDC, Shikrapur, Sanaswadi, Koregaon Bhima, Daund, Parner, Shrigonda, Kashti, Wagholi, Kharadi and across Pune.</div>
+    </details>
+    <details class="faq-item">
+      <summary>Do you help with GST registration and return filing?</summary>
+      <div class="faq-a">Yes. We handle GST registration, monthly and quarterly returns, annual returns, GSTR-2B reconciliation and notice responses.</div>
+    </details>
+    <details class="faq-item">
+      <summary>Can you assist with project finance and CMA data for bank loans?</summary>
+      <div class="faq-a">Yes. We prepare CMA data and project reports for term loans, working capital and MSME funding, and advise on Maharashtra PSI subsidy eligibility.</div>
+    </details>
+    <details class="faq-item">
+      <summary>How can I contact CA Shashikant Ghadage?</summary>
+      <div class="faq-a">You can call or WhatsApp +91 84462 18488, email cashashikantghadage@gmail.com, or submit the enquiry form on this website.</div>
+    </details>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section id="contact">
   <div class="section-header fade-up">
@@ -711,6 +810,23 @@
         </div>
         <button type="submit" class="submit-btn">Send Enquiry</button>
       </form>
+    </div>
+  </div>
+
+  <div class="office-maps fade-up">
+    <div class="map-card">
+      <iframe src="https://maps.google.com/maps?q=C%20303%20EPIC%20Mall%20Kesnand%20Road%20Wagholi%20Pune%20412207&output=embed" loading="lazy" title="Head Office - Wagholi"></iframe>
+      <div class="map-body">
+        <div><div class="map-sub">Head Office</div><div class="map-name">Wagholi, Pune</div></div>
+        <a class="map-dir" href="https://www.google.com/maps/dir/?api=1&destination=C%20303%20EPIC%20Mall%20Kesnand%20Road%20Wagholi%20Pune%20412207" target="_blank" rel="noopener">Get Directions &rarr;</a>
+      </div>
+    </div>
+    <div class="map-card">
+      <iframe src="https://maps.google.com/maps?q=Office%20118%20Baburao%20Nagar%20Nagar%20Pune%20Road%20Shirur%20Pune%20412210&output=embed" loading="lazy" title="Office - Shirur"></iframe>
+      <div class="map-body">
+        <div><div class="map-sub">Shirur Office</div><div class="map-name">Shirur, Pune</div></div>
+        <a class="map-dir" href="https://www.google.com/maps/dir/?api=1&destination=Office%20118%20Baburao%20Nagar%20Nagar%20Pune%20Road%20Shirur%20Pune%20412210" target="_blank" rel="noopener">Get Directions &rarr;</a>
+      </div>
     </div>
   </div>
 </section>
@@ -1063,5 +1179,9 @@ document.querySelectorAll('.nav-links a').forEach(function(link) {
   });
 });
 </script>
+<!-- Floating WhatsApp -->
+<a class="wa-float" href="https://wa.me/918446218488?text=Hello%2C%20I%20would%20like%20to%20enquire%20about%20your%20CA%20services." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 32 32" width="30" height="30" fill="currentColor" aria-hidden="true"><path d="M16 .4C7.4.4.4 7.4.4 16c0 2.8.7 5.5 2.1 7.9L.3 31.6l7.9-2.1c2.3 1.3 4.9 1.9 7.6 1.9h.1c8.6 0 15.6-7 15.6-15.6 0-4.2-1.6-8.1-4.6-11C24 2 20.1.4 16 .4zm0 28.5h-.1c-2.4 0-4.7-.6-6.7-1.9l-.5-.3-4.7 1.2 1.3-4.6-.3-.5c-1.3-2.1-2-4.5-2-7 0-7.2 5.9-13 13.1-13 3.5 0 6.8 1.4 9.2 3.8 2.5 2.5 3.8 5.7 3.8 9.2.1 7.2-5.8 13.1-12.9 13.1zm7.2-9.8c-.4-.2-2.3-1.1-2.7-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.2 1.5-.2.2-.4.3-.8.1-.4-.2-1.7-.6-3.2-2-1.2-1.1-2-2.4-2.2-2.8-.2-.4 0-.6.2-.8.2-.2.4-.4.5-.7.2-.2.2-.4.4-.6.1-.3.1-.5 0-.7-.1-.2-.9-2.2-1.3-3-.3-.8-.7-.7-.9-.7h-.8c-.3 0-.7.1-1 .5-.4.4-1.4 1.3-1.4 3.3 0 1.9 1.4 3.8 1.6 4.1.2.3 2.8 4.3 6.8 6 4 1.7 4 1.1 4.7 1.1.7-.1 2.3-.9 2.6-1.9.3-.9.3-1.7.2-1.9-.1-.1-.3-.2-.7-.4z"/></svg>
+</a>
 </body>
 </html>

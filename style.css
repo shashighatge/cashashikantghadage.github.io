@@ -315,3 +315,14 @@ h2 {
   font-family: 'Jost', sans-serif; letter-spacing: 0.3px; transition: all 0.2s;
 }
 .share-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ── Floating WhatsApp button ───────────────────────────────── */
+.wa-float {
+  position: fixed; bottom: 22px; right: 22px; z-index: 1500;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: #25D366; color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.28); transition: transform 0.2s;
+}
+.wa-float:hover { transform: scale(1.08); }
+@media (max-width: 480px) { .wa-float { width: 52px; height: 52px; bottom: 18px; right: 18px; } }
