@@ -961,7 +961,7 @@ function toolsGateInit() {
   }
 }
 function unlockTools() {
-  if ((document.getElementById(hp-gate)||{}).value) { localStorage.setItem(sgaToolsUnlocked,1); document.getElementById(toolsWrap).classList.remove(locked); return; } /* hp-gate trap */
+  if ((document.getElementById('hp-gate')||{}).value) { localStorage.setItem('sgaToolsUnlocked','1'); document.getElementById('toolsWrap').classList.remove('locked'); return; }
   var name = (document.getElementById('gate-name').value || '').trim();
   var mobile = (document.getElementById('gate-mobile').value || '').trim();
   if (name.length < 2) { alert('Please enter your name'); return; }
@@ -1139,7 +1139,7 @@ document.getElementById('deduction-group').style.display = 'none';
 /* Contact form */
 function submitContact(e) {
   e.preventDefault();
-  if ((document.getElementById(hp-contact)||{}).value) return; /* hp-contact trap */
+  if ((document.getElementById('hp-contact')||{}).value) return;
   var name = document.getElementById('cf-name').value;
   var phone = document.getElementById('cf-phone').value;
   var email = document.getElementById('cf-email').value || 'Not provided';
